@@ -36,7 +36,11 @@ export const addTaskBtnHandler = () => {
   if (textInput.value.trim()) {
     addList(textInput.value);
   } else {
-    alert("You must input first");
+    Swal.fire({
+      title: "Error!",
+      text: "You must input first!",
+      icon: "error",
+    });
   }
 };
 
@@ -45,7 +49,11 @@ export const textInputHandler = (event) => {
   if (event.key === "Enter" && textInput.value.trim()) {
     addList(textInput.value);
   } else if (event.key === "Enter" && !textInput.value.trim()) {
-    alert("You must input first");
+    Swal.fire({
+      title: "Error!",
+      text: "You must input first!",
+      icon: "error",
+    });
   }
   // if (event.key === "Enter") {
   //   if (textInput.value.trim()) {
