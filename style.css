@@ -8,6 +8,11 @@
 
 .swal2-popup {
     @apply rounded-none;
+    @apply font-header;
+}
+
+.swal2-html-container {
+    @apply font-mono;
 }
 
 .swal2-confirm {

@@ -84,21 +84,25 @@ export const deleteAllHandler = () => {
   //   // });
   // }
 
-  Swal.fire({
-    title: "Are you sure to delete all?",
-    text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Delete All!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      const allLists = listGroup.querySelectorAll(".list");
-      // console.log(allLists);
-      allLists.forEach((list) => {
-        list.remove();
-      });
-    }
-  });
+  const lists = document.querySelectorAll(".list");
+
+  if (lists.length > 0) {
+    Swal.fire({
+      title: "Are you sure to delete all?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Delete All!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const allLists = listGroup.querySelectorAll(".list");
+        // console.log(allLists);
+        allLists.forEach((list) => {
+          list.remove();
+        });
+      }
+    });
+  }
 };
 
 export const doneAllHandler = () => {
@@ -113,20 +117,27 @@ export const doneAllHandler = () => {
   //   // doneAll.childNodes[2].nodeValue = "Unchecked All";
   // }
 
-  Swal.fire({
-    title: "Are you sure to checked all lists?",
-    // text: "You won't be able to revert this!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonText: "Done All!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      const allLists = listGroup.querySelectorAll(".list");
-      allLists.forEach((list) => {
-        list.querySelector(".list-done-check").checked = true;
-        doneList(list.id);
-        updateDoneTaskTotal();
-      });
-    }
-  });
+  const lists = document.querySelectorAll(".list");
+
+  if (lists.length > 0) {
+    Swal.fire({
+      title: "Are you sure to checked all lists?",
+      // text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Done All!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const allLists = listGroup.querySelectorAll(".list");
+
+        allLists.forEach((list) => {
+          if (list.querySelector(".list-done-check").checked != true) {
+            list.querySelector(".list-done-check").checked = true;
+            doneList(list.id);
+            updateDoneTaskTotal();
+          }
+        });
+      }
+    });
+  }
 };
