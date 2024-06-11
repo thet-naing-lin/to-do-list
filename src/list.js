@@ -70,7 +70,7 @@ export const editList = (listId) => {
   const currentTask = listTask.innerText;
   const newTaskInput = document.createElement("input");
   newTaskInput.className =
-    "border border-stone-900 px-2 py-1 w-[270px] font-body focus-visible:outline-none";
+    "border border-stone-900 px-2 py-1 w-[180px] font-body focus-visible:outline-none";
   newTaskInput.value = currentTask;
   listTask.after(newTaskInput);
   newTaskInput.focus(); // put cursor in input box
